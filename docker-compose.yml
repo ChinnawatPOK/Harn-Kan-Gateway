@@ -1,0 +1,14 @@
+services:
+  gateway:
+    build: .
+    container_name: harnkan-gateway
+    ports:
+      - "8080:8080"
+    environment:
+      JWT_SECRET: ${JWT_SECRET:9768318c34e318158c87bfb9004a71fbcb9badb1056f74b011d485e27bb4e9a8}
+      USER_SERVICE_URL: ${USER_SERVICE_URL:-http://host.docker.internal:3000}
+      DEAL_SERVICE_URL: ${DEAL_SERVICE_URL:-http://host.docker.internal:8081}
+      PAYMENT_SERVICE_URL: ${PAYMENT_SERVICE_URL:-http://host.docker.internal:8082}
+      NOTIFICATION_SERVICE_URL: ${NOTIFICATION_SERVICE_URL:-http://host.docker.internal:3002}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
