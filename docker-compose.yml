@@ -5,7 +5,7 @@ services:
     ports:
       - "8080:8080"
     environment:
-      JWT_SECRET: ${JWT_SECRET:9768318c34e318158c87bfb9004a71fbcb9badb1056f74b011d485e27bb4e9a8}
+      JWT_SECRET: ${JWT_SECRET:?set JWT_SECRET in .env}
       USER_SERVICE_URL: ${USER_SERVICE_URL:-http://host.docker.internal:3000}
       DEAL_SERVICE_URL: ${DEAL_SERVICE_URL:-http://host.docker.internal:8081}
       PAYMENT_SERVICE_URL: ${PAYMENT_SERVICE_URL:-http://host.docker.internal:8082}
